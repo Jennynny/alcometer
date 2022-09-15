@@ -19,15 +19,15 @@ function App() {
 
     if (gender === 'male'){
       result = gramsLeft/(weight * 0.7) 
-      if (result <0){
-        result = 0
-      }
+     
     }else{
       result = gramsLeft/(weight * 0.6)
-      if(result <0){
-        result = 0
-      }
+      
     } 
+    if (result <0){
+      result = 0
+    }
+
     setPromilles(result.toFixed(2))
   }
 

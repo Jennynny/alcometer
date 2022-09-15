@@ -3,13 +3,13 @@ import './App.css';
 
 function App() {
   const[weight, setWeight] = useState(0)
-  const[bottles, setBottles] = useState(0)
-  const[time, setTime] = useState(0)
+  const[bottles, setBottles] = useState(1)
+  const[time, setTime] = useState(1)
   const[gender, setGender] = useState('male')
   const[promilles, setPromilles] = useState(0)
 
   const count =(e) => {
-    e.prevenDefault()
+    e.preventDefault()
     let result = 0
 
     let litres = bottles * 0.33
@@ -18,7 +18,10 @@ function App() {
     let gramsLeft = grams - (burning * time)
 
     if (gender === 'male'){
-      result = gramsLeft/(weight * 0.7)
+      result = gramsLeft/(weight * 0.7) 
+      if (result <0){
+        result = 0
+      }
     }else{
       result = gramsLeft/(weight * 0.6)
     }
@@ -28,7 +31,7 @@ function App() {
   return (
     <div>
       <h3>Calculating alcohol blood level</h3>
-      <form onSubmit={count}>
+      <form>
       <div>
         <label>Weight</label>
         <input type="number" value={weight} onChange = {e => setWeight(e.target.value)}/>
@@ -75,11 +78,11 @@ function App() {
       </div>
       <div>
         <label>Gender</label>
-        <input type="radio"name="gender" value="male" onChange={e => setGender(e.target.value)}defaulChecked/><label>Male</label>
+        <input type="radio"name="gender" value="male" onChange={e => setGender(e.target.value)}defaultChecked/><label>Male</label>
         <input type="radio"name="gender" value="female" onChange={e => setGender(e.target.value)}/><label>Female</label>
       </div>
       <div>
-      <button>Calculate</button>
+      <button type="button" onClick={count}>Calculate</button>
       </div>
       <div>
         <output>{promilles}</output>

@@ -12,15 +12,15 @@ function App() {
     e.prevenDefault()
     let result = 0
 
-    let litres = bottles*0.33
-    let grams = litres*8*4.5
-    let burning = weight/10
-    let gramsLeft = grams-(burning*time)
+    let litres = bottles * 0.33
+    let grams = litres * 8 * 4.5
+    let burning = weight / 10
+    let gramsLeft = grams - (burning * time)
 
     if (gender === 'male'){
-      result = gramsLeft/(weight*0.7)
+      result = gramsLeft/(weight * 0.7)
     }else{
-      result = gramsLeft/(weight*0.6)
+      result = gramsLeft/(weight * 0.6)
     }
     setPromilles(result.toFixed(2))
   }
@@ -31,7 +31,7 @@ function App() {
       <form onSubmit={count}>
       <div>
         <label>Weight</label>
-        <input type="number" value={weight}onChange = {e => setWeight(e.target.value)}/>
+        <input type="number" value={weight} onChange = {e => setWeight(e.target.value)}/>
       </div>
       <div>
         <label>Bottles</label>
@@ -78,9 +78,9 @@ function App() {
         <input type="radio"name="gender" value="male" onChange={e => setGender(e.target.value)}defaulChecked/><label>Male</label>
         <input type="radio"name="gender" value="female" onChange={e => setGender(e.target.value)}/><label>Female</label>
       </div>
-      
+      <div>
       <button>Calculate</button>
-
+      </div>
       <div>
         <output>{promilles}</output>
       </div>

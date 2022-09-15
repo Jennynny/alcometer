@@ -24,7 +24,10 @@ function App() {
       }
     }else{
       result = gramsLeft/(weight * 0.6)
-    }
+      if(result <0){
+        result = 0
+      }
+    } 
     setPromilles(result.toFixed(2))
   }
 
@@ -33,11 +36,11 @@ function App() {
       <h3>Calculating alcohol blood level</h3>
       <form>
       <div>
-        <label>Weight</label>
+        <label>Weight: </label>
         <input type="number" value={weight} onChange = {e => setWeight(e.target.value)}/>
       </div>
       <div>
-        <label>Bottles</label>
+        <label>Bottles: </label>
         <select value={bottles} onChange = {e => setBottles(e.target.value)}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -57,7 +60,7 @@ function App() {
         </select>
       </div>
       <div>
-        <label>Time</label>
+        <label>Time: </label>
         <select value={time}onChange={e => setTime(e.target.value)}>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -77,7 +80,7 @@ function App() {
           </select>
       </div>
       <div>
-        <label>Gender</label>
+        <label>Gender: </label>
         <input type="radio"name="gender" value="male" onChange={e => setGender(e.target.value)}defaultChecked/><label>Male</label>
         <input type="radio"name="gender" value="female" onChange={e => setGender(e.target.value)}/><label>Female</label>
       </div>

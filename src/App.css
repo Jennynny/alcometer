@@ -15,3 +15,8 @@ form {
   font-weight: bold;
 }
 
+label {
+  display: inline-block; 
+  width: 65px;
+  margin: 3px;
+}
